@@ -1,0 +1,23 @@
+[Pacienti]                        [Lékaři]
++---------------+                 +---------------+
+| ID_pacienta (PK)|◄──────N:1─────| ID_lékaře (PK)|
+| Jméno         |                 | Jméno         |
+| Příjmení      |                 | Příjmení      |
+| Rodné_číslo   |                 | Specializace  |
+| Datum_narození|                 | Telefon       |
+| Adresa        |                 | Email         |
+| Telefon       |                 +---------------+
+| Email         |
++---------------+
+       ▲
+       | N:1
+       |
+[Návštěvy]                        [Diagnózy]
++---------------+                 +---------------+
+| ID_návštěvy (PK)|◄──────1:N─────| ID_diagnózy (PK)|
+| ID_pacienta (FK)|               | ID_návštěvy (FK)|
+| ID_lékaře (FK) |               | Kód_diagnózy  |
+| Datum_návštěvy |               | Název_diagnózy|
+| Poznámky       |               | Popis         |
++---------------+                | Datum_stanovení|
+                                 +---------------+

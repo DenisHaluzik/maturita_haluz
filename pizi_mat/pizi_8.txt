@@ -1,0 +1,21 @@
+[Zákazníci]                     [Zaměstnanci]
++---------------+               +---------------+
+| ID_zákazníka (PK)|◄────N:1────| ID_zaměstnance (PK)|
+| Jméno         |               | Jméno         |
+| Příjmení      |               | Příjmení      |
+| Email         |               | Pozice        |
+| Telefon       |               | Datum_nástupu |
+| Adresa        |               | Plat          |
++---------------+               +---------------+
+       ▲                          ▲
+       | N:1                      | N:1
+       |                          |
+[Objednávky]                    [Položky_objednávek]                [Produkty]                      [Dodavatelé]
++---------------+               +---------------+                    +---------------+               +---------------+
+| ID_objednávky (PK)|◄────1:N────| ID_položky (PK)|◄────N:1──────────| ID_produktu (PK)|◄────N:1──────| ID_dodavatele (PK)|
+| ID_zákazníka (FK)|            | ID_objednávky (FK)|               | Název         |               | Název_firmy   |
+| ID_zaměstnance (FK)|          | ID_produktu (FK)|                 | Cena          |               | Kontaktní_osoba|
+| Datum_objednávky |           | Množství       |                  | Skladová_zásoba|              | Email         |
+| Celková_cena     |           | Cena_za_kus    |                  | ID_dodavatele (FK)|           | Telefon       |
+| Stav             |           | Sleva          |                  | Popis         |               | Datum_spolupráce|
++---------------+               +---------------+                    +---------------+               +---------------+
