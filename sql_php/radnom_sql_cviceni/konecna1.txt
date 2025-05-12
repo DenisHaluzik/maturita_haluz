@@ -1,0 +1,103 @@
+drop database bumbum;
+create database bumbum;
+
+use bumbum;
+
+
+create table uzivatele (IDU int, jmeno varchar(255), prijmeni varchar(255), tel varchar(255), vek varchar(255), mail varchar(255), zalozeni varchar(255)) engine=innodb;
+
+
+
+create table clanek (IDC int not null, nadpis varchar(255), obsah varchar(255), publikace varchar(255), IDU int, primary key (IDC), foreign key (IDU) references uzivatele(IDU)) engine=innodb;
+
+
+
+
+
+create table komentar (IDK int not null, text varchar(255), vytvoreni varchar(255), IDC int, primary key (IDK), foreign key (IDC) references clanek(IDC)) engine=innodb;
+
+
+INSERT INTO clanek values (IDC, nadpis, obsah, publikace, IDU) VALUES (0, 'Vyvoj umele inteligence', 'Umele inteligence se rychle rozviji a ovlivnuje mnoho oblasti zivota.', '2024-01-11', 0);
+
+
+INSERT INTO clanek values (IDC, nadpis, obsah, publikace, IDU) VALUES (1, 'Nove trendy ve svete mody', 'Podivejte se na aktualni modni trendy pro pristi sezonu.', '2024-01-12', 1);
+
+INSERT INTO clanek(IDC, nadpis, obsah, publikace, IDU) VALUES (2, 'Vyhody a nevyhody home office', 'S rostoucim trendem prace z domova je dulezite zvazit vyhody a nevyhody.', '2024-01-13', 2);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (3, '10 tipu na zdravy zivotni styl', 'Zajimave rady pro udrzeni zdraveho zivotniho stylu a dobreho fyzickeho stavu.', '2024-01-14', 3);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (4, 'Historie moderne architektury', 'Prehled klicovych okamziku v historii moderne architektury a designu.', '2024-01-15', 4);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (5, 'Recenze noveho smartphonu', 'Podrobna recenze nejnovejsiho chytreho telefonu na trhu.', '2024-01-16', 5);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (6, 'Ekologicka stopa a udrzitelnost', 'Diskuse o vlivu nasi ekologicke stopy a jak muzeme', '2024-01-17', 6);
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (7, 'Nejlepsi destinace pro dovolenou v prirode', 'Seznam krasnych destinaci pro milovniky prirody a dobrodruzstvi.', '2024-01-18', 7);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (8, 'Vyvoj jazyku programovani', 'Prehled klicovych etap ve vyvoji programovacich jazyku od pocatku po soucasnost.', '2024-01-19', 8);
+
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES (9, 'Tipy pro uspesny podnikatelsky start', 'Rady pro zacinajici podnikatele, jak dosahnout uspechu ve svete podnikani.', '2024-01-20', 9);
+
+
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (3, 'Martina', 'Prochazkova', '+420555666777', 35, 'martina.prochazkova@email.cz', '2024-01-04');
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (4, 'Tomas', 'Cerny', '+420999888777', 22, 'tomas.cerny@email.cz', '2024-01-05');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (5, 'Lucie', 'Hajkova', '+420777888999', 27, 'lucie.hajkova@email.cz', '2024-01-06');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (6, 'Ondrej', 'Novotny', '+420123123123', 32, 'ondrej.novotny@email.cz', '2024-01-07');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (7, 'Veronika', 'Kucerova', '+420456789123', 29, 'veronika.kucerova@email.cz', '2024-01-08');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (8, 'Jakub', 'Marek', '+420333555777', 26, 'jakub.marek@email.cz', '2024-01-09');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (9, 'Karolina', 'Havlickova', '+420111333555', 31, 'karolina.havlickova@email.cz', '2024-01-10');
+
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (0, 'Adam', 'Novotný', '+420234567890', 28, 'adam.novotny@email.cz', '2024-01-11');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (1, 'Barbora', 'Kučerová', '+420987654321', 25, 'barbora.kucerova@email.cz', '2024-01-12');
+
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES (2, 'Cyril', 'Svoboda', '+420111222333', 32, 'cyril.svoboda@email.cz', '2024-01-13');
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (0, 'Dobrý článek.', '2024-01-01 12:30:00', 0);
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (1, 'Skvělý obsah, díky za sdílení!', '2024-01-02 14:15:00', 1);
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (2, 'Mělo by se více psát na toto téma.', '2024-01-03 16:45:00', 2);
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (3, 'Názor na článek: velmi zajímavý.', '2024-01-04 18:20:00', 3);
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (4, 'Co si myslíte o aktuální situaci?', '2024-01-05 10:10:00', 4);
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (5, 'Přečetl jsem to znovu a znovu. Perfektní!', '2024-01-06 22:45:00', 5);
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (6, 'Baví mě číst vaše články.', '2024-01-07 13:05:00', 6);
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (7, 'Máte nějaké doporučení na další čtení?', '2024-01-08 08:30:00', 7);
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (8, 'Zaujalo mě to, budu sledovat další články.', '2024-01-09 19:55:00', 8);
+
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES (9, 'Opravdu pěkná prezentace informací.', '2024-01-10 15:40:00', 9);
+
+

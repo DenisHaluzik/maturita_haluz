@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>databaze</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; 
+        margin: 0;
+    }
+    h1 {
+        color: #007BFF;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    form {
+        width: 100%;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+    form input[type="number"],
+    form input[type="text"],
+    form select {
+        width: calc(100% - 22px); 
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    form input[type="number"]:focus,
+    form input[type="text"]:focus,
+    form select:focus {
+        outline: none;
+        border-color: #007BFF;
+    }
+    form select {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    form input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: block; 
+        width: 100%; 
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    form input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Vyplňte následující údaje</h1>
+   
+    <form action="vyhledani_deskovky.php" method="post" >
+      Vyberte typ hry: <select name="Id_typu_hry">
+        <option value="strategie">Strategie</option>
+        <option value="spolecenska">Společenská</option>
+        <option value="logicka">Logická</option>
+        <option value="karetni">Karetní</option>
+        <option value="deskova">Desková</option>
+      </select>      
+      <br><br>
+      <input type="submit"  value="Odešli" >
+    </form>    
+    <button onclick="window.location.href='index.php'">Návrat na hlavní stránku</button>    
+  </body>
+</html>

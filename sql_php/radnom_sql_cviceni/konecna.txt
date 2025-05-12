@@ -1,0 +1,70 @@
+
+create database bumbum;
+
+use bumbum;
+
+create table uzivatele (
+    IDU int not null,
+    jmeno varchar(255),
+    prijmeni varchar(255),
+    tel varchar(255),
+    vek varchar(255),
+    mail varchar(255),
+    zalozeni varchar(255),
+    primary key (IDU)
+) engine=innodb;
+
+create table clanek (
+    IDC int not null,
+    nadpis varchar(255),
+    obsah varchar(255),
+    publikace varchar(255),
+    IDU int,
+    primary key (IDC),
+    foreign key (IDU) references uzivatele(IDU)
+) engine=innodb;
+
+create table komentar (
+    IDK int not null,
+    text varchar(255),
+    vytvoreni varchar(255),
+    IDC int,
+    primary key (IDK),
+    foreign key (IDC) references clanek(IDC)
+) engine=innodb;
+
+INSERT INTO uzivatele (IDU, jmeno, prijmeni, tel, vek, mail, zalozeni) VALUES 
+(0, 'Adam', 'Novotný', '+420234567890', 28, 'adam.novotny@email.cz', '2024-01-11'),
+(1, 'Barbora', 'Kučerová', '+420987654321', 25, 'barbora.kucerova@email.cz', '2024-01-12'),
+(2, 'Cyril', 'Svoboda', '+420111222333', 32, 'cyril.svoboda@email.cz', '2024-01-13'),
+(3, 'Martina', 'Prochazkova', '+420555666777', 35, 'martina.prochazkova@email.cz', '2024-01-04'),
+(4, 'Tomas', 'Cerny', '+420999888777', 22, 'tomas.cerny@email.cz', '2024-01-05'),
+(5, 'Lucie', 'Hajkova', '+420777888999', 27, 'lucie.hajkova@email.cz', '2024-01-06'),
+(6, 'Ondrej', 'Novotny', '+420123123123', 32, 'ondrej.novotny@email.cz', '2024-01-07'),
+(7, 'Veronika', 'Kucerova', '+420456789123', 29, 'veronika.kucerova@email.cz', '2024-01-08'),
+(8, 'Jakub', 'Marek', '+420333555777', 26, 'jakub.marek@email.cz', '2024-01-09'),
+(9, 'Karolina', 'Havlickova', '+420111333555', 31, 'karolina.havlickova@email.cz', '2024-01-10');
+
+INSERT INTO clanek (IDC, nadpis, obsah, publikace, IDU) VALUES
+(0, 'Development of artificial intelligence', 'Artificial intelligence is rapidly evolving and influencing many areas of life.', '2024-01-11', 0),
+(1, 'New trends in the world of fashion', 'Check out the current fashion trends for the next season.', '2024-01-12', 1),
+(2, 'Advantages and disadvantages of working from home', 'With the growing trend of working from home, it is important to weigh the advantages and disadvantages.', '2024-01-13', 2),
+(3, '10 tips for a healthy lifestyle', 'Interesting tips for maintaining a healthy lifestyle and good physical condition.', '2024-01-14', 3),
+(4, 'History of modern architecture', 'An overview of key milestones in the history of modern architecture and design.', '2024-01-15', 4),
+(5, 'Review of the new smartphone', 'Detailed review of the latest smartphone on the market.', '2024-01-16', 5),
+(6, 'Carbon footprint and sustainability', 'Discussion on the impact of our carbon footprint and how we can contribute to sustainability.', '2024-01-17', 6),
+(7, 'Best destinations for a nature holiday', 'List of beautiful destinations for nature lovers and adventurers.', '2024-01-18', 7),
+(8, 'Development of programming languages', 'An overview of key stages in the development of programming languages from the beginning to the present.', '2024-01-19', 8),
+(9, 'Tips for a successful entrepreneurial start', 'Advice for beginners on how to achieve success in the world of business.', '2024-01-20', 9);
+
+INSERT INTO komentar (IDK, text, vytvoreni, IDC) VALUES
+(0, 'Good article.', '2024-01-01 12:30:00', 0),
+(1, 'Great content, thank you for sharing!', '2024-01-02 14:15:00', 1),
+(2, 'More should be written on this topic.', '2024-01-03 16:45:00', 2),
+(3, 'Opinion on the article: very interesting.', '2024-01-04 18:20:00', 3),
+(4, 'What do you think about the current situation?', '2024-01-05 10:10:00', 4),
+(5, 'I have read it again and again. Perfect!', '2024-01-06 22:45:00', 5),
+(6, 'I enjoy reading your articles.', '2024-01-07 13:05:00', 6),
+(7, 'Do you have any recommendations for further reading?', '2024-01-08 08:30:00', 7),
+(8, 'I was impressed, I will follow your future articles.', '2024-01-09 19:55:00', 8),
+(9, 'A really nice presentation of information.', '2024-01-10 15:40:00', 9);

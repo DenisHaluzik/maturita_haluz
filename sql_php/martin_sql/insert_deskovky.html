@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="generator" content="PSPad editor, www.pspad.com">
+    <title>Formulář pro zápis do databáze</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh; 
+          margin: 0;
+      }
+      h1 {
+          color: #007BFF;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      form {
+          width: 100%;
+          max-width: 600px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin-top: 20px;
+          box-sizing: border-box;
+      }
+      form input[type="number"],
+      form input[type="text"],
+      form select {
+          width: calc(100% - 22px); 
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          box-sizing: border-box;
+      }
+      form input[type="number"]:focus,
+      form input[type="text"]:focus,
+      form select:focus {
+          outline: none;
+          border-color: #007BFF;
+      }
+      form select {
+          width: calc(100% - 22px);
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          box-sizing: border-box;
+      }
+      form input[type="submit"] {
+          background-color: #007BFF;
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: block; 
+          width: 100%; 
+          font-size: 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 10px;
+          margin-bottom: 10px;
+      }
+      form input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+      button {
+          background-color: #28a745;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 5px;
+      }
+      button:hover {
+          background-color: #218838;
+      }
+  </style>
+</head>
+<body> <h1>Vyplňte následující údaje pro nový záznam</h1> 
+    <form action="insert_deskovky.php" method="post">
+      
+        Id hry: <input type="number" name="Id_hry" required><br>       
+        Název hry: <input type="text" name="nazev_hry" required><br>
+        Typ hry: 
+        <select name="Id_typu_hry">
+            <option value="1">Strategie</option>
+            <option value="2">Společenská</option>
+            <option value="3">Logická</option>
+            <option value="4">Karetní</option>
+            <option value="5">Desková</option>
+        </select><br>
+        Vydavatele: 
+        <select name="Id_vydavatele">
+            <option value="1">ALBI</option>
+            <option value="2">AEG</option>
+            <option value="3">MINDOK</option>
+            <option value="4">Czech Games Edition</option>
+            <option value="5">Blackfire</option>
+        </select><br>
+        Cena hry: <input type="number" name="cena_hry"><br>
+        Náročnost hry: <input type="text" name="narocnost_hry"><br>
+        Doporučený věk: <input type="text" name="doporuceny_vek"><br>
+        Počet hráčů: <input type="text" name="pocet_hracu"><br>
+        Počet rozšíření: <input type="number" name="pocet_rozsireni"><br>
+        <input type="submit" value="Odeslat">
+        </form>
+    <button onclick="window.location.href='index.php'">Návrat na hlavní stránku</button>
+</body>
+</html>

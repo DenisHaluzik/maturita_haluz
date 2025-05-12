@@ -1,0 +1,53 @@
+drop database nova;
+create database nova;
+
+use nova;
+
+create table odd(ido int auto_increment primary key, nazev varchar(15) unique) engine=innodb;
+
+
+create table zam(idz int primary key, jmeno varchar(15) not null,mesto varchar(15) not null, plat int, ido int, ids int, foreign key (ido) references odd(ido), foreign key (ids) references zam (idz) ) engine=innodb;
+
+
+insert into odd values (1,"import");
+
+
+insert into odd values (2,"export");
+
+
+insert into odd values (3,"plan");
+
+
+insert into odd values (4,"kontrola");
+
+
+insert into odd values (5,"vyroba");
+
+insert into odd values (6,"verejnost");
+
+insert into zam values (10,"Nos","Praha",38000,2,null);
+
+
+insert into zam values (3,"Nosek","Brno",38000,1,null);
+
+
+insert into zam values (4,"Polak","Pisek",15000,4,3);
+
+
+insert into zam values (9,"Kos","Brno",23000,1,3);
+
+
+insert into zam values (6,"Nepil","Pisek",38000,2,10);
+
+
+insert into zam values (7,"Sup","Tabor",25000,3,10);
+
+
+insert into zam values (2,"Novak","Pisek",30000,5,6);
+
+
+insert into zam values (5,"Horak","Praha",19000,5,6);
+
+insert into zam values (8,"Cap","Pisek",21000,3,6);
+
+insert into zam values (1,"Novy","Pisek",20000,1,2);

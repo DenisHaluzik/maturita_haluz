@@ -1,0 +1,660 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.6.15-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> \. "H:\sql\gej (3).txt";
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt";', error: 22
+mysql> \. "H:\sql\gej (3).txt"
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt"', error: 22
+mysql> \. "H:\sql\gej (3).txt"
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt"', error: 22
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| knihovna           |
+| mysql              |
+| nova               |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use nova
+Database changed
+mysql> ;
+ERROR:
+No query specified
+
+mysql> show tables;
++----------------+
+| Tables_in_nova |
++----------------+
+| odd            |
+| zam            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from odd;
++-----+-----------+
+| ido | nazev     |
++-----+-----------+
+|   2 | export    |
+|   1 | import    |
+|   4 | kontrola  |
+|   3 | plan      |
+|   6 | verejnost |
+|   5 | vyroba    |
++-----+-----------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> select * from zam;
++-----+-------+---------+--------+------+------+
+| idz | jmeno | mesto   | plat   | ido  | ids  |
++-----+-------+---------+--------+------+------+
+|   1 | Novy  | Pisek   | 100000 |    1 |    2 |
+|   2 | Novak | Zlivice |  70000 |    5 |    6 |
+|   3 | Nosek | Brno    |  67656 |    1 | NULL |
+|   4 | Polak | Pisek   | 100000 |    4 |    3 |
+|   5 | Horak | Zlivice |  70000 |    5 |    6 |
+|   6 | Nepil | Pisek   | 100000 |    2 |   10 |
+|   8 | Cap   | Zlivice |  70000 |    3 |    6 |
+|   9 | Kos   | Brno    |  70000 |    1 |    3 |
+|  10 | Nos   | Praha   |  67656 |    2 | NULL |
++-----+-------+---------+--------+------+------+
+9 rows in set (0.00 sec)
+
+mysql> \. "H:\sql\gej (3).txt"
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt"', error: 22
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> \. "H:\sql\gej (3).txt"
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt"', error: 22
+mysql> \. "H:\sql\gej (3).txt";
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt";', error: 22
+mysql> \. "H:\sql\gej (3).txt"
+ERROR:
+Failed to open file '"H:\sql\gej (3).txt"', error: 22
+mysql> \. H:\sql\tvorbadat.txt
+Query OK, 2 rows affected (0.15 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| knihovna           |
+| mysql              |
+| nova               |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use nova
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_nova |
++----------------+
+| odd            |
+| zam            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * form zam;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form zam' at line 1
+mysql> select * form zam;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form zam' at line 1
+mysql> select * form zam
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form zam' at line 1
+mysql> select * from zam
+    -> ;)
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 20000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 38000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 38000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 23000 |    1 |    3 |
+|  10 | Nos   | Praha | 38000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql>
+mysql> update zam set plat=50000 where ido=2 and mesto>"Pisek";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from zam
+    ->
+    -> ;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 20000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 38000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 38000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 23000 |    1 |    3 |
+|  10 | Nos   | Praha | 50000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update zam set plat=60000 where ido=2 or ido=1;
+Query OK, 5 rows affected (0.00 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from zam;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 60000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 60000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 60000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 60000 |    1 |    3 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update zam set plat=70000 where (ido=1 or ido=2 and mesto="Pisek");
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select * from zam;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 70000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 70000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update zam set plat=80000 where (ido=1 or ido=2) and mesto="Pisek";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from zam;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select 1+1
+    -> ;
++-----+
+| 1+1 |
++-----+
+|   2 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 6*697;
++-------+
+| 6*697 |
++-------+
+|  4182 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select 4<5;
++-----+
+| 4<5 |
++-----+
+|   1 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 4>8;
++-----+
+| 4>8 |
++-----+
+|   0 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select jmeno,mesto from zam;
++-------+-------+
+| jmeno | mesto |
++-------+-------+
+| Novy  | Pisek |
+| Novak | Pisek |
+| Nosek | Brno  |
+| Polak | Pisek |
+| Horak | Praha |
+| Nepil | Pisek |
+| Sup   | Tabor |
+| Cap   | Pisek |
+| Kos   | Brno  |
+| Nos   | Praha |
++-------+-------+
+10 rows in set (0.00 sec)
+
+mysql> select 1-5825;
++--------+
+| 1-5825 |
++--------+
+|  -5824 |
++--------+
+1 row in set (0.02 sec)
+
+mysql> select 97894947*4894897;
++------------------+
+| 97894947*4894897 |
++------------------+
+|  479185682385459 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno, plat*12 from zam;
++-------+---------+
+| jmeno | plat*12 |
++-------+---------+
+| Novy  |  960000 |
+| Novak |  360000 |
+| Nosek |  840000 |
+| Polak |  180000 |
+| Horak |  228000 |
+| Nepil |  960000 |
+| Sup   |  300000 |
+| Cap   |  252000 |
+| Kos   |  840000 |
+| Nos   |  720000 |
++-------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select avg(plat) from zam;
++------------+
+| avg(plat)  |
++------------+
+| 47000.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(plat) from zam;
++-----------+
+| min(plat) |
++-----------+
+|     15000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select max(plat) from zam;
++-----------+
+| max(plat) |
++-----------+
+|     80000 |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select max(plat), min(plat), max(plat) from zam;
++-----------+-----------+-----------+
+| max(plat) | min(plat) | max(plat) |
++-----------+-----------+-----------+
+|     80000 |     15000 |     80000 |
++-----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(plat) from zam where mesto="Pisek";
++-----------+
+| sum(plat) |
++-----------+
+|    226000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select count(plat) from zam mesto="Pisek"
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '="Pisek"' at line 1
+mysql> select count(plat) from zam mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '="Pisek"' at line 1
+mysql> select count(*) from zam mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '="Pisek"' at line 1
+mysql> select count(*) from zam mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '="Pisek"' at line 1
+mysql> select count(*) from zam mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '="Pisek"' at line 1
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> select count(*) as "pocet zam z pisku" from zam where mesto="Pisek";
++-------------------+
+| pocet zam z pisku |
++-------------------+
+|                 5 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno, plat*12 as rocni_plat  from zam;
++-------+------------+
+| jmeno | rocni_plat |
++-------+------------+
+| Novy  |     960000 |
+| Novak |     360000 |
+| Nosek |     840000 |
+| Polak |     180000 |
+| Horak |     228000 |
+| Nepil |     960000 |
+| Sup   |     300000 |
+| Cap   |     252000 |
+| Kos   |     840000 |
+| Nos   |     720000 |
++-------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select mesto form zam;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'zam' at line 1
+mysql> select mesto from zam;
++-------+
+| mesto |
++-------+
+| Pisek |
+| Pisek |
+| Brno  |
+| Pisek |
+| Praha |
+| Pisek |
+| Tabor |
+| Pisek |
+| Brno  |
+| Praha |
++-------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct mesto from zam;
++-------+
+| mesto |
++-------+
+| Pisek |
+| Brno  |
+| Praha |
+| Tabor |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct mesto count(*) from zam;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(*) from zam' at line 1
+mysql> select count (distinct mesto) from zam;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct mesto) from zam' at line 1
+mysql> select count(distinct mesto) from zam;
++-----------------------+
+| count(distinct mesto) |
++-----------------------+
+|                     4 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(distinct mesto) as pocet_mest from zam;
++------------+
+| pocet_mest |
++------------+
+|          4 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> order by palt desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by palt desc' at line 1
+mysql> order by plat desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by plat desc' at line 1
+mysql> order by plat(desc);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by plat(desc)' at line 1
+mysql>
+mysql> select * from zam order by jmeno asc;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from zam order by jmeno desc;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from zam order by plat desc;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from zam order by mesto desc;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from zam order by mesto desc, plat asc
+    -> ;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|  10 | Nos   | Praha | 60000 |    2 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   6 | Nepil | Pisek | 80000 |    2 |   10 |
+|   1 | Novy  | Pisek | 80000 |    1 |    2 |
+|   3 | Nosek | Brno  | 70000 |    1 | NULL |
+|   9 | Kos   | Brno  | 70000 |    1 |    3 |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select count(*) where ids is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where ids is null' at line 1
+mysql> select count(*) from zam where ids is null
+    -> ;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) as pocetbezsefu from zam where ids is null
+    -> select count(*) as pocetbezsefu from zam where ids is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select count(*) as pocetbezsefu from zam where ids is null' at line 2
+mysql> select count(*) as pocetbezsefu from zam where ids is null;
++--------------+
+| pocetbezsefu |
++--------------+
+|            2 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(*) as prumer from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) as prumer from zam where ido=3' at line 1
+mysql> select avg(*) as prumer from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) as prumer from zam where ido=3' at line 1
+mysql> select avg(*) as prumer from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) as prumer from zam where ido=3' at line 1
+mysql> select avg(*)from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*)from zam where ido=3' at line 1
+mysql> select avg(*) from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from zam where ido=3' at line 1
+mysql> select avg * from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from zam where ido=3' at line 1
+mysql> select avg * from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from zam where ido=3' at line 1
+mysql> select avg(*) from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from zam where ido=3' at line 1
+mysql> select avg(*) from zam where ido is 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from zam where ido is 3' at line 1
+mysql> select avg(*) from zam where ido=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from zam where ido=3' at line 1
+mysql> select avg(palt) from zam where ido=3;
+ERROR 1054 (42S22): Unknown column 'palt' in 'field list'
+mysql> select avg(plat) from zam where ido=3;
++------------+
+| avg(plat)  |
++------------+
+| 23000.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno from zam where plat>30000 and mesto>"Pisek";
++-------+
+| jmeno |
++-------+
+| Nos   |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno from zam where plat>20000 and mesto>"Pisek";
++-------+
+| jmeno |
++-------+
+| Sup   |
+| Nos   |
++-------+
+2 rows in set (0.00 sec)
+
+mysql>

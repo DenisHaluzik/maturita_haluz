@@ -1,0 +1,61 @@
+﻿drop database deskovky;
+create database deskovky;
+use deskovky;
+
+create table vy (idv int primary key, na varchar(20) unique) engine=innodb;
+insert into vy values (1,"ALBI");
+insert into vy values (2,"AEG");
+insert into vy values (3,"MINDOK");
+insert into vy values (4,"Czech Games Edition");
+insert into vy values (5,"Blackfire");
+
+create table th (idt int primary key, nt varchar(20) unique) engine=innodb;
+insert into th values (1, "strategie");
+insert into th values (2, "spolecenska");
+insert into th values (3, "logicka");
+insert into th values (4, "karetni");
+insert into th values (5, "deskova");
+
+create table nh (idh int primary key, idt int, idv int, nah varchar(50) unique, ce varchar(20), nar varchar(20), dv varchar(20), ph varchar(20) , ro varchar(20)) engine=innodb;
+insert into nh values (1, 5, 1, "Dominion", "899", "stredne slozite", "12+", "1-4", "5");  
+insert into nh values (2, 4, 2, "Pirati", "500", "jednoduche", "7+", "2-6", "0");
+insert into nh values (3, 3, 3, "Enigma", "1000", "slozite", "18+", "1-4", "0");
+insert into nh values (4, 2, 4, "Activity", "722", "jednoduche", "10+", "1-6", "1");
+insert into nh values (5, 1, 5, "Sedm Divu Sveta", "1500", "slozite", "12+", "1-7", "4");
+insert into nh values (6, 5, 1, "Vladci podzemi", "899", "stredne slozite", "12+", "1-4", "5");  
+insert into nh values (7, 4, 4, "Galaxy trucker", "500", "jednoduche", "7+", "2-6", "0");
+insert into nh values (8, 3, 3, "Carcassone", "1000", "slozite", "18+", "1-4", "0");
+insert into nh values (9, 2, 1, "Alhambra", "722", "jednoduche", "10+", "1-6", "1");
+insert into nh values (10, 1, 5, "Kralovske rosady", "1500", "slozite", "12+", "1-7", "4");
+insert into nh values (11, 5, 4, "Proklety ostrov", "899", "stredne slozite", "12+", "1-4", "5");  
+insert into nh values (12, 4, 2, "Divukraj", "500", "jednoduche", "7+", "2-6", "0");
+insert into nh values (13, 3, 3, "Postovni kuryr", "1000", "slozite", "18+", "1-4", "0");
+insert into nh values (14, 2, 4, "Osadnici z Katanu", "722", "jednoduche", "10+", "1-6", "1");
+insert into nh values (15, 1, 5, "Duch!", "1500", "slozite", "12+", "1-7", "4");
+insert into nh values (16, 5, 1, "Valka o prsten", "899", "stredne slozite", "12+", "1-4", "5");  
+insert into nh values (17, 4, 4, "Hobbit", "500", "jednoduche", "7+", "2-6", "0");
+insert into nh values (18, 3, 3, "Odin", "1000", "slozite", "18+", "1-4", "0");
+insert into nh values (19, 2, 1, "Krabcaci", "722", "jednoduche", "10+", "1-6", "1");
+insert into nh values (20, 1, 5, "BANG!", "1500", "slozite", "12+", "1-7", "4");
+insert into nh values (21, 5, 4, "Prival temnoty", "899", "stredne slozite", "12+", "1-4", "5");  
+insert into nh values (22, 4, 2, "Draci hlidka", "500", "jednoduche", "7+", "2-6", "0");
+insert into nh values (23, 3, 3, "Dune Imperium: Uprising", "1000", "slozite", "18+", "1-4", "0");
+insert into nh values (24, 2, 4, "Vampire: The Masquerade CHAPTERS", "722", "jednoduche", "10+", "1-6", "1");
+insert into nh values (25, 1, 5, "Pepik a Marenka", "1500", "slozite", "18+", "2-9", "4");
+insert into nh values (26, 2, 3, "Tajemstvi Draciho hradu", "1200", "jednoduche", "18+", "2-6", "7");
+insert into nh values (27, 2, 3, "Vladci Magicke rise", "1300", "stredne slozite", "16+", "1-5", "2");
+insert into nh values (28, 3, 4, "Zahada Ztraceneho mesta", "1400", "jednoduche", "12+", "1-4", "3");
+insert into nh values (29, 5, 5, "Valka Prastarych bohu", "1600", "slozite", "12+", "1-4", "0");
+insert into nh values (30, 5, 2, "Pribehy Ztracenych krystalu", "1700", "stredne slozite", "12+", "1-4", "0");
+insert into nh values (31, 3, 1, "Osudovy Souboj v Temnem lese", "1770", "jednoduche", "10+", "1-5", "0");
+insert into nh values (32, 4, 5, "Hrdinove a Draci: Pribeh o Vitezstvi", "1660", "slozite", "7+", "1-6", "0");
+insert into nh values (33, 4, 3, "Magicky Portal: Cesta za Poznanim", "1880", "stredne slozite", "12+", "1-4", "8");
+insert into nh values (34, 3, 4, "Stinova Rise: Intriky a Vzpoura", "1550", "slozite", "16+", "2-7", "2");
+insert into nh values (35, 3, 5, "Kletba Zapomenuteho chramu", "1544", "jednoduche", "18+", "2-", "1");
+insert into nh values (36, 4, 3, "Vladci Zeme Pradavnych", "1559", "slozite", "18+", "2-7", "3");
+insert into nh values (37, 5, 2, "Dobyvatele Vesmirne brany", "1569", "jednoduche", "12+", "2-6", "4");
+insert into nh values (38, 1, 3, "Ztracene Artefakty: Hledani Moudrost", "1579", "slozite", "16+", "2-4", "4");
+insert into nh values (39, 5, 4, "Temny Priliv: Boj o Posledni Hradbu", "1589", "stredne slozite", "10+", "1-4", "5");
+insert into nh values (40, 1, 4, "Odkaz Starodavnych: Tajemstvi Ztraceneho Pisma", "1599", "stredne slozite", "10+", "1-4", "6");
+
+

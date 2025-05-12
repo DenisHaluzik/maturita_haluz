@@ -1,0 +1,414 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.6.15-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> \. H:\sql\tvorbadat.txt
+Query OK, 2 rows affected (0.03 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| knihovna           |
+| mysql              |
+| nova               |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> use nova
+Database changed
+mysql> desc nova
+    -> ;
+ERROR 1146 (42S02): Table 'nova.nova' doesn't exist
+mysql> show tables nova;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nova' at line 1
+mysql> show tables;
++----------------+
+| Tables_in_nova |
++----------------+
+| odd            |
+| zam            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from odd
+    -> ;
++-----+-----------+
+| ido | nazev     |
++-----+-----------+
+|   2 | export    |
+|   1 | import    |
+|   4 | kontrola  |
+|   3 | plan      |
+|   6 | verejnost |
+|   5 | vyroba    |
++-----+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from export;
+ERROR 1146 (42S02): Table 'nova.export' doesn't exist
+mysql> select * from zam;
++-----+-------+-------+-------+------+------+
+| idz | jmeno | mesto | plat  | ido  | ids  |
++-----+-------+-------+-------+------+------+
+|   1 | Novy  | Pisek | 20000 |    1 |    2 |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |
+|   3 | Nosek | Brno  | 38000 |    1 | NULL |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |
+|   5 | Horak | Praha | 19000 |    5 |    6 |
+|   6 | Nepil | Pisek | 38000 |    2 |   10 |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |
+|   9 | Kos   | Brno  | 23000 |    1 |    3 |
+|  10 | Nos   | Praha | 38000 |    2 | NULL |
++-----+-------+-------+-------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select jmeno, plat from zam order by plat asc limit 3
+    -> ;
++-------+-------+
+| jmeno | plat  |
++-------+-------+
+| Polak | 15000 |
+| Horak | 19000 |
+| Novy  | 20000 |
++-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select count(*) from zam where mesto=pisek;
+ERROR 1054 (42S22): Unknown column 'pisek' in 'where clause'
+mysql> select count(*) from zam where mesto=Pisek;
+ERROR 1054 (42S22): Unknown column 'Pisek' in 'where clause'
+mysql> select count(*) "as pocet z pisku" from zam where mesto="Pisek";
++------------------+
+| as pocet z pisku |
++------------------+
+|                5 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) "as pocet z pisku" from zam where mesto="Pisek" or mesto="Brno";
++------------------+
+| as pocet z pisku |
++------------------+
+|                7 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) as "vetsi plat" from zam where plat>30 000 and mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '000 and mesto="Pisek"' at line 1
+mysql> select count(*) as "vetsi plat" from zam where plat>30000 and mesto="Pisek";
++------------+
+| vetsi plat |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) as "vetsi plat" from zam where plat=>30000 and mesto="Pisek";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=>30000 and mesto="Pisek"' at line 1
+mysql> select count(*) as "vetsi plat" from zam where plat>=30000 and mesto="Pisek";
++------------+
+| vetsi plat |
++------------+
+|          2 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(*) as "prumer z Brna" from zam where mesto="Brno";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) as "prumer z Brna" from zam where mesto="Brno"' at line 1
+mysql> select avg(plat) as "prumer z Brna" from zam where mesto="Brno";
++---------------+
+| prumer z Brna |
++---------------+
+|    30500.0000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd,ido;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ido' at line 1
+mysql> select *from zam, odd where zam.ido=odd,ido;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ido' at line 1
+mysql> select * ¨from zam, odd where zam.ido=odd,ido;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '¨from zam, odd where zam.ido=odd,ido' at line 1
+mysql> select * from zam, odd where zam.ido=odd,ido;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ido' at line 1
+mysql> select * from zam, odd where zam.ido=odd.ido;
++-----+-------+-------+-------+------+------+-----+----------+
+| idz | jmeno | mesto | plat  | ido  | ids  | ido | nazev    |
++-----+-------+-------+-------+------+------+-----+----------+
+|   6 | Nepil | Pisek | 38000 |    2 |   10 |   2 | export   |
+|  10 | Nos   | Praha | 38000 |    2 | NULL |   2 | export   |
+|   1 | Novy  | Pisek | 20000 |    1 |    2 |   1 | import   |
+|   3 | Nosek | Brno  | 38000 |    1 | NULL |   1 | import   |
+|   9 | Kos   | Brno  | 23000 |    1 |    3 |   1 | import   |
+|   4 | Polak | Pisek | 15000 |    4 |    3 |   4 | kontrola |
+|   7 | Sup   | Tabor | 25000 |    3 |   10 |   3 | plan     |
+|   8 | Cap   | Pisek | 21000 |    3 |    6 |   3 | plan     |
+|   2 | Novak | Pisek | 30000 |    5 |    6 |   5 | vyroba   |
+|   5 | Horak | Praha | 19000 |    5 |    6 |   5 | vyroba   |
++-----+-------+-------+-------+------+------+-----+----------+
+10 rows in set (0.00 sec)
+
+mysql> select * from zam, odd where zam.ido=odd.ido and nazev="import";
++-----+-------+-------+-------+------+------+-----+--------+
+| idz | jmeno | mesto | plat  | ido  | ids  | ido | nazev  |
++-----+-------+-------+-------+------+------+-----+--------+
+|   1 | Novy  | Pisek | 20000 |    1 |    2 |   1 | import |
+|   3 | Nosek | Brno  | 38000 |    1 | NULL |   1 | import |
+|   9 | Kos   | Brno  | 23000 |    1 |    3 |   1 | import |
++-----+-------+-------+-------+------+------+-----+--------+
+3 rows in set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd.ido and nazev="import";
++-------+--------+
+| jmeno | nazev  |
++-------+--------+
+| Novy  | import |
+| Nosek | import |
+| Kos   | import |
++-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd.ido and nazev="import" or nazev="export";
++-------+--------+
+| jmeno | nazev  |
++-------+--------+
+| Novy  | export |
+| Novy  | import |
+| Novak | export |
+| Nosek | export |
+| Nosek | import |
+| Polak | export |
+| Horak | export |
+| Nepil | export |
+| Sup   | export |
+| Cap   | export |
+| Kos   | export |
+| Kos   | import |
+| Nos   | export |
++-------+--------+
+13 rows in set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd.ido and nazev="import, export";
+Empty set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd.ido and (nazev="import" or nazev="export");
++-------+--------+
+| jmeno | nazev  |
++-------+--------+
+| Nepil | export |
+| Nos   | export |
+| Novy  | import |
+| Nosek | import |
+| Kos   | import |
++-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select count(*) from zam, odd where zam.ido=odd.ido and (nazev="import" or nazev="export");
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(plat) from zam, odd where zam.ido=odd.ido and (nazev="import" or nazev="export");
++-----------+
+| sum(plat) |
++-----------+
+|    157000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(plat) from zam, odd where zam.ido=odd.ido and nazev="Kontrola";
++-----------+
+| sum(plat) |
++-----------+
+|     15000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(plat) as "Průměný plat" from zam, odd where zam.ido=odd.ido;
++--------------+
+| Průměný plat |
++--------------+
+|       267000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(jmeno) from zam, odd where zam.ido=odd.ido and nazev="import" and plat>21000;
++------------+
+| sum(jmeno) |
++------------+
+|          0 |
++------------+
+1 row in set, 2 warnings (0.01 sec)
+
+mysql> select sum(jmeno) from zam, odd where zam.ido=odd.ido and (nazev="import" and plat>21000);
++------------+
+| sum(jmeno) |
++------------+
+|          0 |
++------------+
+1 row in set, 2 warnings (0.00 sec)
+
+mysql> select sum(jmeno) from zam, odd where zam.ido=odd.ido and nazev="import" or plat>21000;
++------------+
+| sum(jmeno) |
++------------+
+|          0 |
++------------+
+1 row in set, 37 warnings (0.00 sec)
+
+mysql> select avg(plat) as "Průměný plat" from zam, odd where zam.ido=odd.ido;
++--------------+
+| Průměný plat |
++--------------+
+|   26700.0000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select count(jmeno) from zam, odd where zam.ido=odd.ido and nazev="import" or plat>21000;
++--------------+
+| count(jmeno) |
++--------------+
+|           37 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select count(jmeno) from zam, odd where zam.ido=odd.ido and nazev="import" and plat>21000;
++--------------+
+| count(jmeno) |
++--------------+
+|            2 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno, plat from zam, odd where zam.ido=odd.ido and mesto="Pisek";
++-------+-------+
+| jmeno | plat  |
++-------+-------+
+| Nepil | 38000 |
+| Novy  | 20000 |
+| Polak | 15000 |
+| Cap   | 21000 |
+| Novak | 30000 |
++-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select jmeno from zam, odd where zam.ido=odd.ido and nazev="Kontrola";
++-------+
+| jmeno |
++-------+
+| Polak |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select count(jmeno) from zam, odd where zam.ido=odd.ido and plat>20000;
++--------------+
+| count(jmeno) |
++--------------+
+|            7 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select max(plat) from zam, odd where zam.ido=odd.ido and nazev="import";
++-----------+
+| max(plat) |
++-----------+
+|     38000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select jmeno, nazev from zam, odd where zam.ido=odd.ido;
++-------+----------+
+| jmeno | nazev    |
++-------+----------+
+| Nepil | export   |
+| Nos   | export   |
+| Novy  | import   |
+| Nosek | import   |
+| Kos   | import   |
+| Polak | kontrola |
+| Sup   | plan     |
+| Cap   | plan     |
+| Novak | vyroba   |
+| Horak | vyroba   |
++-------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select min(plat) from zam, odd where zam.ido=odd.ido and mesto="Praha";
++-----------+
+| min(plat) |
++-----------+
+|     19000 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select nazev from zam, odd where zam.ido=odd.ido and (mesto="Brno" or mesto="Praha");
++--------+
+| nazev  |
++--------+
+| export |
+| import |
+| import |
+| vyroba |
++--------+
+4 rows in set (0.00 sec)
+
+mysql>

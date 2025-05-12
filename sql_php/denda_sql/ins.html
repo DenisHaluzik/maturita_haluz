@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Squares</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+      .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+      .square {
+            width: 300px;
+            height: 300px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2em;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+      .square:focus {
+            outline: none;
+            transform: scale(1.05);
+        }
+
+      .uzivatele {
+            background-color: rgba(52, 152, 219, 0.5);
+            border-color: rgba(52, 152, 219, 0.8);
+        }
+
+      .clanek {
+            background-color: rgba(231, 76, 60, 0.5);
+            border-color: rgba(231, 76, 60, 0.8);
+        }
+
+      .komentare {
+            background-color: rgba(46, 204, 113, 0.5);
+            border-color: rgba(46, 204, 113, 0.8);
+        }
+
+      .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+      <div class="square uzivatele" role="button" tabindex="0" onclick="location.href='uzivatele.php'">Uživatelé</div>
+      <div class="square clanek" role="button" tabindex="0" onclick="location.href='clanek.php'">Článek</div>
+      <div class="square komentare" role="button" tabindex="0" onclick="location.href='koment.php'">Komentáře</div>
+  </div>
+
+  <div class="footer">
+      <p>&copy; Haluzik Denis</p>
+  </div>
+
+  <script>
+      document.querySelectorAll('.square').forEach(square => {
+          square.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') {
+                  square.click();
+              }
+          });
+      });
+  </script>
+</body>
+</html>

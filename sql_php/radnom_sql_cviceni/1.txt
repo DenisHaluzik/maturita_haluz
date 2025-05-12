@@ -1,0 +1,211 @@
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.6.15-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| knihovna           |
+| mysql              |
+| nova               |
+| performance_schema |
+| phpmyadmin         |
+| pokus              |
+| test               |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use knihovna
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| kniha              |
+| zanr               |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table zanr
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table zarn (idz int primary key, nazev(20) not null unique) engine=innodb;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(20) not null unique) engine=innodb' at line 1
+mysql> create table zarn (idz int primary key, nazev varchar(20) not null unique) engine=innodb;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables
+    -> ;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| kniha              |
+| zarn               |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table kniha
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| zarn               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> create table zarn (idz int primary key, nazev varchar(20) not null unique) engine=innodb;
+ERROR 1050 (42S01): Table 'zarn' already exists
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz)) engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz)) engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> use knihovna
+Database changed
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz)) engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key(idz) references zanr(idz)) engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz)) engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> show tables;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| zarn               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz))engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zanr(idz))engine=innodb;
+ERROR 1215 (HY000): Cannot add foreign key constraint
+mysql> show tables;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| zarn               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> desc zanr;
+ERROR 1146 (42S02): Table 'knihovna.zanr' doesn't exist
+mysql> desc zarn;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| idz   | int(11)     | NO   | PRI | NULL    |       |
+| nazev | varchar(20) | NO   | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> create table  kniha(idk int primary key, titul varchar(50) not null, rv int not null, idz int not null, foreign key (idz) references zarn(idz))engine=innodb;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| kniha              |
+| zarn               |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc kniha
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| idk   | int(11)     | NO   | PRI | NULL    |       |
+| titul | varchar(50) | NO   |     | NULL    |       |
+| rv    | int(11)     | NO   |     | NULL    |       |
+| idz   | int(11)     | NO   | MUL | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table kniha add pocstr int not null;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc kniha;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| idk    | int(11)     | NO   | PRI | NULL    |       |
+| titul  | varchar(50) | NO   |     | NULL    |       |
+| rv     | int(11)     | NO   |     | NULL    |       |
+| idz    | int(11)     | NO   | MUL | NULL    |       |
+| pocstr | int(11)     | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table kniha drop pocstr;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc kniha;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| idk   | int(11)     | NO   | PRI | NULL    |       |
+| titul | varchar(50) | NO   |     | NULL    |       |
+| rv    | int(11)     | NO   |     | NULL    |       |
+| idz   | int(11)     | NO   | MUL | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table kniha rename knihy;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables
+    -> ;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| knihy              |
+| zarn               |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table kniha change titul titulec varchar(40);
+ERROR 1146 (42S02): Table 'knihovna.kniha' doesn't exist
+mysql> alter table knihy change titul titulec varchar(40);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show tables
+    -> ;
++--------------------+
+| Tables_in_knihovna |
++--------------------+
+| knihy              |
+| zarn               |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc knihy;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| idk     | int(11)     | NO   | PRI | NULL    |       |
+| titulec | varchar(40) | YES  |     | NULL    |       |
+| rv      | int(11)     | NO   |     | NULL    |       |
+| idz     | int(11)     | NO   | MUL | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql>
