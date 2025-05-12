@@ -1,0 +1,73 @@
+PROGRAM prgMain
+
+VAR_INPUT
+END_VAR
+
+VAR_OUTPUT
+END_VAR
+
+VAR
+    pom : BOOL := 1;                // Pomocná proměnná – říká, jestli má začít pohyb
+    Nab_Vac : R_TRIG;              // Náběhová hrana pro nasátí (vakuum)
+    Ses_Vac : F_TRIG;              // Klidová hrana pro vypnutí sání (vakuum)
+    Nab_ZDV_D : R_TRIG;            // Náběh signálu pro spuštění zdvihu
+    Nab_PRI_D : R_TRIG;            // Náběh signálu pro prioritu
+    Nab_PRI_H : R_TRIG;            // Náběh signálu pro prioritu z jiného směru
+    Cas_Rot : TON;                 // Časovač pro rotaci (otáčení)
+    Cit_Rot : CTU;                 // Čítač pro rotaci (počítá kolikrát se otočí)
+    St_Rot : INT;                  // Počet otáček
+    Cas_Zdv : TON;                 // Časovač pro zdvih (zvednutí)
+    Cit_Zdv : CTUD;                // Čítač pro zdvih (počítá kolikrát se zvedne)
+    St_Zdv : INT;                  // Počet zdvihů
+    Start_W : BOOL;                // Pomocná startovací proměnná
+END_VAR
+
+VAR_TEMP
+END_VAR
+
+//––––––––––––––––––––––––––––––––––––––––––
+// ŘÍZENÍ PNEUMATICKÉ RUKY (příkazy pro robota)
+//––––––––––––––––––––––––––––––––––––––––––
+
+// Detekce náběhu a pádu signálu pro sání
+Nab_Vac(CLK := VAC_D);
+Ses_Vac(CLK := VAC_D);
+
+// Detekce spuštění zdvihu a priorit
+Nab_ZDV_D(CLK := ZDV_D);
+Nab_PRI_D(CLK := PRI_D);
+Nab_PRI_H(CLK := PRI_H);
+
+// Vypočítání hodnot pro řízení
+ZDV := (pom or Nab_PRI_H.Q and not ROT or ZDV) and not (Start or Start_W or ROT_Z); // Aktivuj zdvih pokud je potřeba a není zákaz
+PRI := (Nab_ZDV_D.Q and not pom or PRI) and not (Nab_Vac.Q or SES_Vac.Q);          // Podmínka pro prioritu
+VAC := Nab_PRI_D.Q xor VAC;     // Přepni sání pokud je priorita
+ROT := ZDV_H and VAC or ROT;    // Otoč se, když držíš věc a jsi zvednutý
+
+// Po spuštění nebo restartu vynuluj pomocnou proměnnou
+if Start or Start_W Then
+    pom := 0;
+End_If;
+
+// Vynuluj Start_W po spuštění
+if Start_W Then
+    Start_W := 0;
+End_If;
+
+//––––––––––––––––––––––––––––––––––––––––––
+// OVLÁDÁNÍ WEBU / GRAFICKÉHO ZOBRAZENÍ
+//––––––––––––––––––––––––––––––––––––––––––
+
+// Časování pro animaci rotace – počká 1.25 s
+Cas_Rot(IN := ROT and not Cas_Rot.Q, PT := T#1.25s);
+
+// Po každém doběhnutí časovače přičti do čítače otáčení (max 4)
+Cit_Rot(CU := Cas_Rot.Q, PV := 4, CV => St_Rot);
+
+// Časování pro zdvih – počká 1.1 s
+Cas_Zdv(IN := not Cas_Zdv.Q, PT := T#1.1s);
+
+// Čítač zdvihu: přičti 1 když se zvedá, uber 1 když klesá
+Cit_Zdv(CU := ZDV and Cas_Zdv.Q, CD := not ZDV and Cas_Zdv.Q, PV := 4, CV => St_Zdv);
+
+END_PROGRAM
