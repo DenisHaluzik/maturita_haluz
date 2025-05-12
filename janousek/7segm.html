@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<!DOCTYPE html PUBLIC
+	'-//W3C//DTD XHTML 1.1//EN'
+	'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>
+<!-- Creator: MCU 8051 IDE v1.4.10 -->
+	<head>
+		<title>rozlicna f + casovac.asm</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+		<meta name="Generator" content="MCU 8051 IDE v1.4.10" />
+		<style type="text/css">
+			body {
+				font-family: Courier;
+				font-size: 13px;
+			}
+			.constant {
+				color: #55AA00;
+			}
+			.comment {
+				color: #888888;
+				font-style: italic;
+			}
+			.oper_sep {
+				color: #DD8800;
+				font-weight: bold;
+			}
+			.directive {
+				color: #8888FF;
+				font-weight: bold;
+			}
+			.label {
+				color: #885500;
+			}
+			.instruction {
+				color: #0000FF;
+				font-weight: bold;
+			}
+			.sfr {
+				color: #0000DD;
+			}
+			.imm_hex {
+				color: #AA00DD;
+			}
+			.imm_bin {
+				color: #5555AA;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+		<!-- CODE BLOCK - begin -->
+<span class='comment'>; LED blikajici s rozlicnou f + citac/casovac</span>
+
+<span class='label'>main:</span>	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000000b</span>	<span class='comment'>;zapis 0</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000001b</span>	<span class='comment'>;zapis 1</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000010b</span>	<span class='comment'>;zapis 2</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000011b</span>	<span class='comment'>;zapis 3</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000100b</span>	<span class='comment'>;zapis 4</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000101b</span>	<span class='comment'>;zapis 5</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000110b</span>	<span class='comment'>;zapis 6</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00000111b</span>	<span class='comment'>;zapis 7</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00001000b</span>	<span class='comment'>;zapis 8</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>MOV</span> <span class='sfr'>P0</span><span class='oper_sep'>,</span><span class='imm_bin'>#00001001b</span>	<span class='comment'>;zapis 9</span>
+	<span class='instruction'>acall</span> <span class='constant'>casovac</span>		<span class='comment'>;zpozdeni</span>
+	<span class='instruction'>sjmp</span> <span class='constant'>main</span>		<span class='comment'>;smyčka</span>
+
+
+
+<span class='label'>casovac:</span> <span class='instruction'>mov</span> <span class='sfr'>TL0</span><span class='oper_sep'>,</span><span class='imm_hex'>#0xAA</span>		<span class='comment'>;přednastavení časovače (určuje čas)</span>
+	 <span class='instruction'>mov</span> <span class='sfr'>TH0</span><span class='oper_sep'>,</span><span class='imm_hex'>#0xAA</span>		<span class='comment'>;přednastavení časovače	(určuje čas)</span>
+	 <span class='instruction'>setb</span> <span class='sfr'>TR0</span>		<span class='comment'>;spuštění časovače</span>
+	 <span class='instruction'>clr</span> <span class='sfr'>TF0</span>		<span class='comment'>;vynulování TF0</span>
+<span class='label'>loop:</span>	 <span class='instruction'>jb</span> <span class='sfr'>TF0</span><span class='oper_sep'>,</span><span class='constant'>end</span>		<span class='comment'>;kontroluje TF0</span>
+	 <span class='instruction'>sjmp</span> <span class='constant'>loop</span>		<span class='comment'>;smyčka loop</span>
+<span class='label'>end:</span>	 <span class='instruction'>ret</span>			<span class='comment'>;konec cyklu</span>
+	<span class='directive'>end</span>
+		<!-- CODE BLOCK - end -->
+		</pre>
+	</body>
+</html>
